@@ -4,7 +4,9 @@
   "description": "Fancy html-based Javascript console output window",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/karimayachi/html-console/issues"
   },
-  "homepage": "https://github.com/karimayachi/html-console#readme"
+  "homepage": "https://github.com/karimayachi/html-console#readme",
+  "devDependencies": {
+    "css-loader": "^3.3.0",
+    "style-loader": "^1.0.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
 }
