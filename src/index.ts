@@ -17,9 +17,17 @@ window.console.log = function (...items: any[]) {
     }
 }
 
-window.onload = (): void => {
-    document.getElementsByTagName('body')[0].appendChild(output);
-};
+ifDomReady(output);
+
+/* poll DOM in stead of using onload event, because JSFiddle will overwrite onload event handler */
+function ifDomReady(consoleBlock: HTMLDivElement): void {
+    if(document.getElementsByTagName('body').length > 0) {
+        document.getElementsByTagName('body')[0].appendChild(consoleBlock);
+    }
+    else {
+        setTimeout((): void => { ifDomReady(output); }, 50);
+    }
+}
 
 function createItem(o: any, baseLevel: boolean): HTMLDivElement {
     let item: HTMLDivElement = document.createElement('div');
