@@ -1,8 +1,8 @@
-# html-console
+# html-console-output
 Fancy html-based Javascript console output window
 
 ## What is it?
-html-console appends console output to the HTML of the webpage. It was made for JSFiddle and similar webtools to extend the use of these JavaScript playgrounds for debugging and demonstration purposes. But as it's jus HTML added to the webpage, it can be styled and used in any project, for instance as an always open debugging-pane.
+html-console-output appends console output to the HTML of the webpage. It was made for JSFiddle and similar webtools to extend the use of these JavaScript playgrounds for debugging and demonstration purposes. But as it's jus HTML added to the webpage, it can be styled and used in any project, for instance as an always open debugging-pane.
 
 ## Usage
 
@@ -10,25 +10,25 @@ html-console appends console output to the HTML of the webpage. It was made for 
 Insert the following tag in your HTML:
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/html-console"></script>
+<script type="text/javascript" src="https://unpkg.com/html-console-output"></script>
 ```
 
-Specifically for JSFiddle, add `https://unpkg.com/html-console` to the resources.
+Specifically for JSFiddle, add `https://unpkg.com/html-console-ouput` to the resources.
 
 ### NPM
 
 In your project add the module as a dependency
 ```shell
-npm i html-console
+npm i html-console-output
 ```
 
 Add the module ES6-style
 ```typescript
-import 'html-console';
+import 'html-console-output';
 ```
 or CommonJS-style
 ```javascript
-require('html-console');
+require('html-console-output');
 ```
 
 ## Build

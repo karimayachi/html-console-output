@@ -1,5 +1,5 @@
 {
-  "name": "html-console",
+  "name": "html-console-output",
   "version": "0.8.0",
   "description": "Fancy html-based Javascript console output window",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karimayachi/html-console.git"
+    "url": "git+https://github.com/karimayachi/html-console-output.git"
   },
   "keywords": [
     "jsfiddle",
@@ -27,9 +27,9 @@
   "author": "Karim Ayachi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/karimayachi/html-console/issues"
+    "url": "https://github.com/karimayachi/html-console-output/issues"
   },
-  "homepage": "https://github.com/karimayachi/html-console#readme",
+  "homepage": "https://github.com/karimayachi/html-console-ouput#readme",
   "devDependencies": {
     "css-loader": "^3.3.0",
     "style-loader": "^1.0.1",
