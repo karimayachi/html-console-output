@@ -2,7 +2,6 @@ import './style.css';
 
 const output: HTMLDivElement = document.createElement('div');
 output.classList.add('console-block');
-document.getElementsByTagName('body')[0].appendChild(output);
 
 const oldLog: Function = window.console.log;
 
@@ -17,6 +16,10 @@ window.console.log = function (...items: any[]) {
         outputLine.appendChild(createItem(item, true));
     }
 }
+
+document.onload = (): void => {
+    document.getElementsByTagName('body')[0].appendChild(output);
+};
 
 function createItem(o: any, baseLevel: boolean): HTMLDivElement {
     let item: HTMLDivElement = document.createElement('div');
