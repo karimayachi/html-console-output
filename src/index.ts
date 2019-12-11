@@ -17,7 +17,7 @@ window.console.log = function (...items: any[]) {
     }
 }
 
-document.onload = (): void => {
+window.onload = (): void => {
     document.getElementsByTagName('body')[0].appendChild(output);
 };
 
