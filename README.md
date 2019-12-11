@@ -2,7 +2,7 @@
 Fancy html-based Javascript console output window
 
 ## What is it?
-html-console-output appends console output to the HTML of the webpage. It was made for JSFiddle and similar webtools to extend the use of these JavaScript playgrounds for debugging and demonstration purposes. But as it's jus HTML added to the webpage, it can be styled and used in any project, for instance as an always open debugging-pane.
+html-console-output appends console output to the HTML of a webpage. It was made with JSFiddle or similar webtools in mind. It's main purpose is to extend the use of these JavaScript playgrounds to allow debugging and demonstrations. But as it's just HTML added to the webpage, it can be styled and used in any project, for instance as an always open debugging-pane.
 
 ## Usage
 
