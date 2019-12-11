@@ -32,7 +32,7 @@ require('html-console');
 ```
 
 ## Build
-Run development server with test-page"
+Run development server with test-page:
 ```shell
 npm run dev
 ```
