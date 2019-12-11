@@ -13,7 +13,7 @@ Insert the following tag in your HTML:
 <script type="text/javascript" src="https://unpkg.com/html-console-output"></script>
 ```
 
-Specifically for JSFiddle, add `https://unpkg.com/html-console-ouput` to the resources.
+Specifically for JSFiddle, add `https://unpkg.com/html-console-output` to the resources.
 
 ### NPM
 
