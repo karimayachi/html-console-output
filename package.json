@@ -7,8 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-prod": "webpack --config webpack.config-prod.js",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "prepack": "npm install && npm run build-prod"
   },
+  "files": [
+    "dist/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karimayachi/html-console.git"
