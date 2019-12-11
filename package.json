@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-prod": "webpack --config webpack.config-prod.js",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
