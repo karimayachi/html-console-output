@@ -1,6 +1,6 @@
 {
   "name": "html-console",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "Fancy html-based Javascript console output window",
   "main": "dist/index.js",
   "scripts": {
