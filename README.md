@@ -49,6 +49,27 @@ Build for production from source code:
 npm run build-prod
 ```
 
+## Caveats
+Most browsers when logging anything other than primitives to the console don't serialize the object to a string, but keep a reference to the original object. When inspecting the object in the console, you'll inspect the state it has at the time of inspecting, not the time of logging. html-console-ouput on the other hand captures the state at logging-time and serializes it to text.
+
+Consider this example:
+```javascript
+var person = { name: 'John', age: 41};
+console.log(person);
+
+person.age += 1; // go shorty, it's your birthday
+
+console.log(person);
+```
+
+When inspecting in Firefox it shows the state at the time of inspecting:<br>
+![image](doc/screenshot-firefox.png)
+
+When inspecting in html-console-output it shows the state at the time of logging:<br>
+![image](doc/screenshot-html-console.png)
+
+Actually I feel the latter is more useful when debugging timings and dynamic user interfaces, but it's something to keep in mind either way.
+
 ## License
 Copyright 2019, Karim Ayachi
 
