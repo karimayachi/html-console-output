@@ -19,12 +19,12 @@ Specifically for JSFiddle, add `https://unpkg.com/html-console-output` to the re
 
 ### NPM
 
-In your project add the module as a dependency
+Add the module to your project as a dependency
 ```shell
 npm i html-console-output
 ```
 
-Add the module ES6-style
+Import the module ES6-style
 ```typescript
 import 'html-console-output';
 ```
