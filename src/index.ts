@@ -1,4 +1,6 @@
 import './style.css';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 const MAXITEMSINOBJECTPREVIEW = 3;
 const MAXITEMSINARRAYPREVIEW = 5;
@@ -126,6 +128,27 @@ function createObjectItem(o: any): DocumentFragment {
         contentInner.appendChild(serializedProperty);
     }
 
+    for (let property of getHiddenProperties(o)) {
+        const serializedProperty: HTMLDivElement = document.createElement('div');
+        serializedProperty.classList.add('console-property');
+        let lockIcon: HTMLElement = <HTMLElement>icon(faLock).node[0];
+        lockIcon.style.color = '#aaa';
+        serializedProperty.appendChild(lockIcon);
+        serializedProperty.innerHTML += ` ${property}: `;
+        serializedProperty.appendChild(createItem(o[property], false, false));
+        contentInner.appendChild(serializedProperty);
+    }
+
+    let proto: any = Object.getPrototypeOf(o);
+    if (proto !== null) {
+        const serializedProperty: HTMLDivElement = document.createElement('div');
+        serializedProperty.classList.add('console-property');
+        serializedProperty.style.color = '#777';
+        serializedProperty.innerHTML = '(prototype): ';
+        serializedProperty.appendChild(createItem(proto, false, false));
+        contentInner.appendChild(serializedProperty);
+    }
+
     content.appendChild(contentInner);
 
     fragment.appendChild(toggle);
@@ -195,4 +218,21 @@ function createArrayPreview(a: any[]): DocumentFragment {
 
     fragment.appendChild(span);
     return fragment;
+}
+
+function getHiddenProperties(o: any): string[] {
+    /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames
+    */
+
+    let all: string[] = Object.getOwnPropertyNames(o);
+    let enumOnly: string[] = Object.keys(o);
+
+    return all.filter((key: string): boolean => {
+        let index: number = enumOnly.indexOf(key);
+        if (index == -1) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 }
