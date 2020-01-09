@@ -34,6 +34,12 @@ function ifDomReady(consoleBlock: HTMLDivElement): void {
     }
 }
 
+/**
+ * Serialize an object or primitive to HTML
+ * @param o The object to be serialized
+ * @param baseLevel true if used as top-level element, false when used in recursive child serialization
+ * @param inline true if used in preview for Array or Object
+ */
 function createItem(o: any, baseLevel: boolean, inline: boolean): HTMLDivElement {
     let item: HTMLDivElement = document.createElement('div');
     item.classList.add('console-item');
