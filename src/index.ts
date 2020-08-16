@@ -22,12 +22,30 @@ window.console.log = function (...items: any[]) {
     }
 }
 
+
+window.onerror = (message, source, lineno, colno, error): void => {
+    const outputLine: HTMLDivElement = document.createElement('div');
+    outputLine.classList.add('console-line');
+    outputLine.classList.add('error');
+    output.appendChild(outputLine);
+
+    let errorMessage: HTMLSpanElement = document.createElement('span');
+    errorMessage.innerHTML = <string>message;
+    outputLine.appendChild(errorMessage);
+ }
+
 ifDomReady(output);
 
 /* poll DOM in stead of using onload event, because JSFiddle will overwrite onload event handler */
 function ifDomReady(consoleBlock: HTMLDivElement): void {
-    if (document.getElementsByTagName('body').length > 0) {
-        document.getElementsByTagName('body')[0].appendChild(consoleBlock);
+    if (document.getElementById('html-console-output') ||
+        document.getElementsByTagName('body').length > 0) {
+            if(document.getElementById('html-console-output')) {
+                document.getElementById('html-console-output')!.appendChild(consoleBlock);
+            }
+            else {
+                document.getElementsByTagName('body')[0].appendChild(consoleBlock);
+            }
     }
     else {
         setTimeout((): void => { ifDomReady(output); }, 50);
@@ -127,6 +145,8 @@ function createObjectItem(o: any): DocumentFragment {
     label.appendChild(labelTextShort);
 
     for (let property in o) {
+        if(Object.getOwnPropertyNames(o).indexOf(property) == -1) continue;
+
         const serializedProperty: HTMLDivElement = document.createElement('div');
         serializedProperty.classList.add('console-property');
         serializedProperty.innerHTML = property + ': ';
