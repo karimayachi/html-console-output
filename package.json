@@ -31,12 +31,12 @@
   },
   "homepage": "https://github.com/karimayachi/html-console-output#readme",
   "devDependencies": {
-    "css-loader": "^3.3.0",
+    "css-loader": "^6.7.3",
     "style-loader": "^1.0.1",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^9.4.2",
     "typescript": "^3.7.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
