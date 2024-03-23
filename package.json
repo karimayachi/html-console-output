@@ -31,16 +31,16 @@
   },
   "homepage": "https://github.com/karimayachi/html-console-output#readme",
   "devDependencies": {
-    "css-loader": "^6.7.3",
-    "style-loader": "^1.0.1",
-    "ts-loader": "^9.4.2",
-    "typescript": "^3.7.3",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
+    "css-loader": "^6.10.0",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0"
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1"
   }
 }

@@ -25,7 +25,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
-        contentBase: path.join(__dirname, 'test'),
+        static: path.join(__dirname, 'test'),
         compress: true,
         port: 9000
     }
