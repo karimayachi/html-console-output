@@ -250,12 +250,5 @@ function getHiddenProperties(o: any): string[] {
   let all: string[] = Object.getOwnPropertyNames(o);
   let enumOnly: string[] = Object.keys(o);
 
-  return all.filter((key: string): boolean => {
-    let index: number = enumOnly.indexOf(key);
-    if (index == -1) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+  return all.filter((key: string): boolean => enumOnly.indexOf(key) === -1);
 }
