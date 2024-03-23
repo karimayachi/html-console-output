@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Test for HTML-Console-Output</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript">
-        console.log('Joe', 321, {
-            ka: 'this is some text',
-            status: null,
-            address: {
-                s: 'Hudstronstreet',
-                n: 10,
-                c: 'New York'
-            },
-            active: true
+      console.log(
+        'Joe',
+        321,
+        {
+          ka: 'this is some text',
+          status: null,
+          address: {
+            s: 'Hudstronstreet',
+            n: 10,
+            c: 'New York',
+          },
+          active: true,
         },
-            [7, 8, 9, {
-                propA: 'some more text',
-                propB: 99,
-                doThis: function () {
-                    return 'Hello World!';
-                }
+        [
+          7,
+          8,
+          9,
+          {
+            propA: 'some more text',
+            propB: 99,
+            doThis: function () {
+              return 'Hello World!';
             },
-            0, -100
-            ]);
+          },
+          0,
+          -100,
+        ]
+      );
 
-        function Person(n, a, s) {
-            this.name = n;
-            this.age = a;
-            this.status = s;
-        }
+      function Person(n, a, s) {
+        this.name = n;
+        this.age = a;
+        this.status = s;
+      }
 
-        console.log('Some person:', new Person('John', 41, true));
+      console.log('Some person:', new Person('John', 41, true));
     </script>
-</body>
-
+  </body>
 </html>
