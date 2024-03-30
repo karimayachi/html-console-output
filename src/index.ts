@@ -5,30 +5,30 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 const MAXITEMSINOBJECTPREVIEW = 3;
 const MAXITEMSINARRAYPREVIEW = 5;
 
-const output: HTMLDivElement = document.createElement('div');
+const output = document.createElement('div');
 output.classList.add('console-block');
 
-const oldLog: Function = window.console.log;
+const oldLog = window.console.log;
 
-window.console.log = function (...items: any[]) {
-  oldLog.apply(this, arguments);
+window.console.log = (...items: unknown[]) => {
+  oldLog(items);
 
-  const outputLine: HTMLDivElement = document.createElement('div');
+  const outputLine = document.createElement('div');
   outputLine.classList.add('console-line');
   output.appendChild(outputLine);
 
-  for (let item of items) {
+  for (const item of items) {
     outputLine.appendChild(createItem(item, true, false));
   }
 };
 
-window.onerror = (message, source, lineno, colno, error): void => {
-  const outputLine: HTMLDivElement = document.createElement('div');
+window.onerror = (message): void => {
+  const outputLine = document.createElement('div');
   outputLine.classList.add('console-line');
   outputLine.classList.add('error');
   output.appendChild(outputLine);
 
-  let errorMessage: HTMLSpanElement = document.createElement('span');
+  const errorMessage = document.createElement('span');
   errorMessage.innerHTML = <string>message;
   outputLine.appendChild(errorMessage);
 };
@@ -56,8 +56,8 @@ function ifDomReady(consoleBlock: HTMLDivElement): void {
  * @param baseLevel true if used as top-level element, false when used in recursive child serialization
  * @param inline true if used in preview for Array or Object
  */
-function createItem(o: any, baseLevel: boolean, inline: boolean): HTMLDivElement {
-  let item: HTMLDivElement = document.createElement('div');
+function createItem(o: unknown, baseLevel: boolean, inline: boolean) {
+  const item = document.createElement('div');
   item.classList.add('console-item');
 
   switch (typeof o) {
@@ -83,7 +83,7 @@ function createItem(o: any, baseLevel: boolean, inline: boolean): HTMLDivElement
         if (inline) {
           item.innerHTML = '{&mldr;}';
         } else {
-          item.appendChild(createObjectItem(o));
+          item.appendChild(createObjectItem(o as { [key: string]: unknown }));
         }
       }
       break;
@@ -100,15 +100,15 @@ function createItem(o: any, baseLevel: boolean, inline: boolean): HTMLDivElement
   return item;
 }
 
-function createObjectItem(o: any): DocumentFragment {
-  const fragment: DocumentFragment = document.createDocumentFragment();
-  const id: string = 'u' + Math.random().toString(36).substr(2, 8);
-  const toggle: HTMLInputElement = document.createElement('input');
-  const label: HTMLLabelElement = document.createElement('label');
-  const labelText: HTMLSpanElement = document.createElement('span');
-  const labelTextShort: HTMLSpanElement = document.createElement('span');
-  const content: HTMLDivElement = document.createElement('div');
-  const contentInner: HTMLDivElement = document.createElement('div');
+function createObjectItem(o: { [key: string]: unknown }) {
+  const fragment = document.createDocumentFragment();
+  const id = 'u' + Math.random().toString(36).substr(2, 8);
+  const toggle = document.createElement('input');
+  const label = document.createElement('label');
+  const labelText = document.createElement('span');
+  const labelTextShort = document.createElement('span');
+  const content = document.createElement('div');
+  const contentInner = document.createElement('div');
 
   content.classList.add('collapsible-content');
   contentInner.classList.add('content-inner');
@@ -130,7 +130,7 @@ function createObjectItem(o: any): DocumentFragment {
   } else {
     labelTextShort.innerHTML = '{&mldr;}';
 
-    let prototype: any = Object.getPrototypeOf(o);
+    const prototype: object = Object.getPrototypeOf(o);
     labelText.innerHTML = prototype && prototype.constructor ? prototype.constructor.name : 'Object';
     labelText.innerHTML += ' ';
     labelText.appendChild(createObjectPreview(o));
@@ -141,20 +141,20 @@ function createObjectItem(o: any): DocumentFragment {
   label.appendChild(labelText);
   label.appendChild(labelTextShort);
 
-  for (let property in o) {
+  for (const property in o) {
     if (Object.getOwnPropertyNames(o).indexOf(property) == -1) continue;
 
-    const serializedProperty: HTMLDivElement = document.createElement('div');
+    const serializedProperty = document.createElement('div');
     serializedProperty.classList.add('console-property');
     serializedProperty.innerHTML = property + ': ';
     serializedProperty.appendChild(createItem(o[property], false, false));
     contentInner.appendChild(serializedProperty);
   }
 
-  for (let property of getHiddenProperties(o)) {
-    const serializedProperty: HTMLDivElement = document.createElement('div');
+  for (const property of getHiddenProperties(o)) {
+    const serializedProperty = document.createElement('div');
     serializedProperty.classList.add('console-property');
-    let lockIcon: HTMLElement = <HTMLElement>icon(faLock).node[0];
+    const lockIcon: HTMLElement = <HTMLElement>icon(faLock).node[0];
     lockIcon.style.color = '#aaa';
     serializedProperty.appendChild(lockIcon);
     serializedProperty.innerHTML += ` ${property}: `;
@@ -162,9 +162,9 @@ function createObjectItem(o: any): DocumentFragment {
     contentInner.appendChild(serializedProperty);
   }
 
-  let proto: any = Object.getPrototypeOf(o);
+  const proto: object = Object.getPrototypeOf(o);
   if (proto !== null) {
-    const serializedProperty: HTMLDivElement = document.createElement('div');
+    const serializedProperty = document.createElement('div');
     serializedProperty.classList.add('console-property');
     serializedProperty.style.color = '#777';
     serializedProperty.innerHTML = '(prototype): ';
@@ -181,22 +181,22 @@ function createObjectItem(o: any): DocumentFragment {
   return fragment;
 }
 
-function createLengthSpan(a: any[]): HTMLSpanElement {
-  const span: HTMLSpanElement = document.createElement('span');
+function createLengthSpan(a: unknown[]) {
+  const span = document.createElement('span');
   span.style.color = '#aaa';
   span.innerHTML = `(${a.length}) `;
 
   return span;
 }
 
-function createObjectPreview(o: any): DocumentFragment {
-  const fragment: DocumentFragment = document.createDocumentFragment();
-  const span: HTMLSpanElement = document.createElement('span');
+function createObjectPreview(o: { [key: string]: unknown }) {
+  const fragment = document.createDocumentFragment();
+  const span = document.createElement('span');
 
   span.innerHTML = '{';
 
   let index: number = 0;
-  for (let property in o) {
+  for (const property in o) {
     span.innerHTML += ` ${property}: `;
     span.appendChild(createItem(o[property], false, true));
 
@@ -218,9 +218,9 @@ function createObjectPreview(o: any): DocumentFragment {
   return fragment;
 }
 
-function createArrayPreview(a: any[]): DocumentFragment {
-  const fragment: DocumentFragment = document.createDocumentFragment();
-  const span: HTMLSpanElement = document.createElement('span');
+function createArrayPreview(a: unknown[]) {
+  const fragment = document.createDocumentFragment();
+  const span = document.createElement('span');
 
   span.innerHTML = '[';
 
@@ -243,12 +243,12 @@ function createArrayPreview(a: any[]): DocumentFragment {
   return fragment;
 }
 
-function getHiddenProperties(o: any): string[] {
+function getHiddenProperties(o: object): string[] {
   /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames
    */
 
-  let all: string[] = Object.getOwnPropertyNames(o);
-  let enumOnly: string[] = Object.keys(o);
+  const all: string[] = Object.getOwnPropertyNames(o);
+  const enumOnly: string[] = Object.keys(o);
 
   return all.filter((key: string): boolean => enumOnly.indexOf(key) === -1);
 }

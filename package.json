@@ -31,7 +31,10 @@
   },
   "homepage": "https://github.com/karimayachi/html-console-output#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "css-loader": "^6.10.0",
+    "eslint": "^8.57.0",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.3",
